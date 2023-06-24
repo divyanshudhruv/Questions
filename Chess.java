@@ -1,4 +1,3 @@
-
 /**
  * # Chess Game(Doubt)
  * # A Chess Game Made In Java With The Use Of 2-D Array
@@ -15,7 +14,7 @@ public class Chess{
     int row,column;
 
     boolean king; 
-    String chessBoard1[][] = {
+    String chessBoard[][] = {
             {"R","P"," "," "," "," ","P","R"},
             {"K","P"," "," "," "," ","P","K"},
             {"B","P"," "," "," "," ","P","B"},
@@ -34,15 +33,15 @@ public class Chess{
         sc = new Scanner(System.in);
     }
 
-    public void k(){
-        String temp = chessBoard1[0][0]; // Refers To 1a
-        chessBoard1[0][0] = chessBoard1[3][0]; // Swapping 4a => 1a
-        chessBoard1[3][0] = temp; // Swapping 1a => 4a(TEMP)
+    public void king(){
+        String temp = chessBoard[0][0]; // Refers To 1a
+        chessBoard[0][0] = chessBoard[3][0]; // Swapping 4a => 1a
+        chessBoard[3][0] = temp; // Swapping 1a => 4a(TEMP)
     }
 
     void lookPiece(){
-        if(chessBoard1[row][column].equals("K"))
-            k(); //king      
+        if(chessBoard[row][column].equals("K"))
+            king(); //king      
         else
             System.out.println("Error");
     }
@@ -81,8 +80,8 @@ public class Chess{
             obj.printChessBoard(); 
 
             obj.getPos(p1);
-            obj.getValues();
-            obj.lookPiece();
+            obj.getValues(); // Get Value Of The Index
+            obj.lookPiece(); // Look For Pieces
         }
     }
 
@@ -103,7 +102,7 @@ public class Chess{
         int a =1;
 
         // Print Chess Board
-        for (int i = 0; i < chessBoard1.length; i++) {
+        for (int i = 0; i < chessBoard.length; i++) {
             // Margin
             System.out.println("    +-----------------------------------------------+");
 
@@ -111,9 +110,9 @@ public class Chess{
             System.out.print(a+"  ");
 
             // Chess Board
-            for (int j = 0; j < chessBoard1[i].length; j++) {
+            for (int j = 0; j < chessBoard[i].length; j++) {
                 // Left Margin And Chess Board
-                System.out.print(" |  " + chessBoard1[i][j] + " ");
+                System.out.print(" |  " + chessBoard[i][j] + " ");
             }
 
             // Right Margin
@@ -124,7 +123,7 @@ public class Chess{
             a=a +1;
         }
 
-        // Bottome Margin
+        // Bottom Margin
         System.out.println("    +-----------------------------------------------+");
         System.out.println();
 
@@ -153,8 +152,8 @@ public class Chess{
         // {"K","P"," "," "," "," ","P","K"},
         // {"R","P"," "," "," "," ","P","R"}
         // };     
-        obj.printChessBoard();
-        obj.input();
+        obj.printChessBoard(); // Print Default Chess Board
+        obj.input(); // Ask User To Input The Moves
     }
 }
 
